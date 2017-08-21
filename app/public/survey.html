@@ -21,7 +21,7 @@
   <div id='questions'>
     <h3>Question 1</h3>
     <h4>On a friday night, you are more inclined to hit up a new Netflix series than hit up the bars</h4>
-    <select>
+    <select id='q1'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -31,7 +31,7 @@
 
     <h3>Question 2</h3>
     <h4>You think that Star Wars is the greatest movie series of all time.</h4>
-    <select>
+    <select id='q2'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -41,7 +41,7 @@
 
     <h3>Question 3</h3>
     <h4>Pizza is the way to your heart.</h4>
-    <select>
+    <select id='q3'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -51,7 +51,7 @@
 
     <h3>Question 4</h3>
     <h4>You've watched every single Game of Thrones episode to date.</h4>
-    <select>
+    <select id='q4'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -61,7 +61,7 @@
 
     <h3>Question 5</h3>
     <h4>During football season, you have to be part of AT LEAST two fantasy football leagues.</h4>
-    <select>
+    <select id='q5'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -71,7 +71,7 @@
 
     <h3>Question 6</h3>
     <h4>You like to see yourself as a 'morning person'</h4>
-    <select>
+    <select id='q6'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -81,7 +81,7 @@
 
     <h3>Question 7</h3>
     <h4>You like to travel</h4>
-    <select>
+    <select id='q7'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -90,7 +90,7 @@
       </select>
     <h3>Question 8</h3>
     <h4>8</h4>
-    <select>
+    <select id='q8'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -99,7 +99,7 @@
       </select>
     <h3>Question 9</h3>
     <h4>9</h4>
-    <select>
+    <select id='q9'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -108,7 +108,7 @@
       </select>
     <h3>Question 10</h3>
     <h4>10</h4>
-    <select>
+    <select id='q10'>
         <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -129,12 +129,18 @@
 
       var friendName = $('#name').val().trim();
       var friendPic = $('#pic').val().trim();
+      var question = $('#q1');
       var newFriend = {
         name: friendName,
         photo: friendPic,
         scores: []
       };
-      console.log('new friend added.');
+
+      for (let i = 0; i <= 9; i++) {
+        var question = $(`#q${[i]}`).val();
+        newFriend.scores.push(question);
+      };
+      console.log(newFriend);
     });
   </script>
 </body>
