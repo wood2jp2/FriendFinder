@@ -13,12 +13,6 @@ app.use(bodyParser.json({
   type: "application/vnd.api+json"
 }));
 
-var friends = [{
-  name: 'Josh',
-  photo: 'google.com',
-  scores: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}];
-
 require("./routing/htmlRoutes.js")(app);
 require('./routing/apiRoutes.js')(app);
 
