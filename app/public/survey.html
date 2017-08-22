@@ -127,18 +127,38 @@
 
       var friendName = $('#name').val().trim();
       var friendPic = $('#pic').val().trim();
-      var question = $('#q1');
       var newFriend = {
         name: friendName,
         photo: friendPic,
         scores: []
       };
 
-      for (let i = 0; i <= 9; i++) {
-        var question = $(`#q${[i]}`).val();
-        newFriend.scores.push(question);
+      function validateData() {
+        if (friendName === '' || friendPic === '') {
+          alert('Please fill out the required fields!');
+        } else {
+          addTheFriend();
+        }
       };
-      console.log(newFriend);
+
+      function addTheFriend() {
+        var question = $('#q1');
+
+        for (let i = 1; i <= 10; i++) {
+          var question = $(`#q${i}`).val();
+          newFriend.scores.push(question);
+        };
+        console.log(newFriend);
+      };
+
+      validateData();
+
+      var currentURL = window.location.origin;
+
+      $.post(currentURL + '/api/friends', newFriend, function(data) {
+        alert('working');
+      })
+
     });
   </script>
 </body>
