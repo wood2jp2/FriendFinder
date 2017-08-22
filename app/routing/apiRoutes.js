@@ -2,11 +2,34 @@ var friendsData = require('../data/friends');
 
 module.exports = function(app) {
   app.get('/api/friends', function(req, res) {
-    res.send(friendsData)
+    res.json(friendsData)
   });
 
-  app.post('api/friends', function(req, res) {
+  app.post('/api/friends', function(req, res) {
     res.send('Friend added');
+
     friendsData.push(req.body);
+
+    var bestMatch;
+    var pushedFriendScore = req.body.scores.reduce(function(sum, value) {
+      return sum + value;
+    }, req.body.scores[0]);
+
+    var matchToBeat;
+    for (let i = 0; i < friendsData.length - 1; i++) {
+
+      var currentFriendScore = friendsData[i].scores.reduce(function(sum, value) {
+        return sum + value;
+      }, friendsData[i].scores[0]);
+
+      var difference = Math.abs(currentFriendScore - pushedFriendScore);
+      if (matchToBeat[0] === 'undefined' || difference < matchToBeat) {
+        matchToBeat = difference;
+        bestMatch = friendsData[i];
+      }
+    }
+
+
+
   });
 }
