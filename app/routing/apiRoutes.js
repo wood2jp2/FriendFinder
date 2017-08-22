@@ -7,26 +7,32 @@ module.exports = function(app) {
 
   app.post('/api/friends', function(req, res) {
 
-
-    console.log(req.body);
+    // console.log(req.body); -- CHECK
     var pushedFriendScore = req.body.scores.reduce(function(sum, value) {
-      return sum + value;
-    }, req.body.scores[0]);
+      return parseInt(sum) + parseInt(value);
+    }, 0);
 
+    var matchToBeat = 1000;
 
     for (let i = 0; i < friendsData.length; i++) {
 
       var currentFriendScore = friendsData[i].scores.reduce(function(sum, value) {
-        return sum + value;
-      }, friendsData[i].scores[0]);
+        return parseInt(sum) + parseInt(value);
+      }, 0);
 
-      var difference = Math.abs(currentFriendScore - pushedFriendScore);
+      // console.log(currentFriendScore); -- CHECK
 
-      if (matchToBeat === 'undefined' || difference < matchToBeat) {
-        var matchToBeat = difference;
+      var currentDifference = Math.abs(currentFriendScore - pushedFriendScore);
+
+      // console.log(difference); -- CHECK
+
+      if (currentDifference < matchToBeat) {
+        matchToBeat = currentDifference;
         var bestMatch = friendsData[i];
-      }
+        // console.log(matchToBeat); -- CHECK
+      };
     };
+
     console.log(bestMatch);
 
     friendsData.push(req.body);

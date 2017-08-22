@@ -166,7 +166,6 @@
           var question = $(`#q${i}`).val();
           newFriend.scores.push(question);
         };
-        console.log(newFriend);
         var currentURL = window.location.origin;
 
         $.post(currentURL + '/api/friends', newFriend, function(data) {
