@@ -152,6 +152,7 @@
         photo: friendPic,
         scores: []
       };
+      var currentURL = window.location.origin;
 
       function validateData() {
         if (friendName === '' || friendPic === '') {
@@ -166,7 +167,7 @@
           var question = $(`#q${i}`).val();
           newFriend.scores.push(question);
         };
-        var currentURL = window.location.origin;
+
 
         $.post(currentURL + '/api/friends', newFriend, function(data) {
           console.log('working');
@@ -175,6 +176,10 @@
 
       validateData();
 
+      $.get(currentURL + '/api/friends',
+        function(bestMatch) {
+          console.log(bestMatch);
+        });
 
 
     });

@@ -33,11 +33,11 @@ module.exports = function(app) {
       };
     };
 
-    console.log(bestMatch);
+    // console.log(bestMatch); -- CHECK
 
     friendsData.push(req.body);
 
-    res.json(bestMatch);
+    res.send(bestMatch);
 
   });
 }
