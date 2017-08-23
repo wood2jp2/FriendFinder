@@ -170,17 +170,16 @@
 
 
         $.post(currentURL + '/api/friends', newFriend, function(data) {
-          console.log('working');
+          console.log(data);
         })
       };
 
       validateData();
 
-      $.get(currentURL + '/api/friends',
-        function(bestMatch) {
-          console.log(bestMatch);
-        });
-
+      // $.get(currentURL + '/api/friends',
+      //   function(data) {
+      //     console.log(data.bestMatch);
+      //   });
 
     });
   </script>
