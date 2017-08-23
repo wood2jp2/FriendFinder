@@ -129,7 +129,8 @@
           <h4 class="modal-title">Best Match</h4>
         </div>
         <div class="modal-body">
-
+          <h1 id='friendName'></h1>
+          <img id='matchPic' width='300px' height='300px' alt="Image not found.">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -170,16 +171,15 @@
 
 
         $.post(currentURL + '/api/friends', newFriend, function(data) {
-          console.log(data);
-        })
+          console.log(data.photo);
+          var matchPic = $('#matchPic');
+          var matchName = $('#friendName');
+          matchPic.attr('src', data.photo);
+          matchName.text(data.name);
+        });
       };
 
       validateData();
-
-      // $.get(currentURL + '/api/friends',
-      //   function(data) {
-      //     console.log(data.bestMatch);
-      //   });
 
     });
   </script>
