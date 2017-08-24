@@ -1,9 +1,11 @@
+// SSDD
 const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 8080;
 
+// rand express and body parser nonsense
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true

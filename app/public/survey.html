@@ -144,17 +144,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <script type="text/javascript">
+    // CLICK FUNCTIONS I MISST YAAA
     $('#submitButton').on('click', function() {
-
+      // variables for user input boxes
       var friendName = $('#name').val().trim();
       var friendPic = $('#pic').val().trim();
+
+      // taking those values and making an object
       var newFriend = {
         name: friendName,
         photo: friendPic,
         scores: []
       };
+
+      // ties current URL location to var for l8r
       var currentURL = window.location.origin;
 
+      // making sure the user inputs something
       function validateData() {
         if (friendName === '' || friendPic === '') {
           alert('Please fill out the required fields!');
@@ -163,22 +169,30 @@
         }
       };
 
+      // once user passes validateData function, add them
       function addTheFriend() {
+
+        // a loop through the user's answer values
         for (let i = 1; i <= 10; i++) {
+          // CUZ TEMPLATE LITERALS ARE THE $###
           var question = $(`#q${i}`).val();
+          // pushing the user scores into the newFriend object one at a time
           newFriend.scores.push(question);
         };
 
+        // this Po$t route pushes up the new friend to the active web page list of friends, AND pulls back down the \
+        // best friend match data. See apiRoutes.js or whatever i named it
 
+        // THREE ARGs: post URL, data being posted, callback function with the data back
         $.post(currentURL + '/api/friends', newFriend, function(data) {
-          console.log(data.photo);
           var matchPic = $('#matchPic');
           var matchName = $('#friendName');
+          // setting the modal to display the best match's photo and name
           matchPic.attr('src', data.photo);
           matchName.text(data.name);
         });
       };
-
+      // who doesn't forget to call their first function
       validateData();
 
     });

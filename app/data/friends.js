@@ -1,3 +1,5 @@
+// storing and exporting all the pre-set friends that I personally populated
+
 data = [{
   name: 'Batman',
   photo: 'http://vignette1.wikia.nocookie.net/batman/images/c/c8/Batman_%2766_-_Adam_West_as_Batman_2.jpg/revision/latest?cb=20140731220401',
